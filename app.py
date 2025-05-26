@@ -107,7 +107,8 @@ if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     # st.code(content, language='text')
-    st.write(content)
+    # st.write(content)
+    st.text(content)
 else:
     st.error("File not found. Please check the file structure.")
 common_message()
