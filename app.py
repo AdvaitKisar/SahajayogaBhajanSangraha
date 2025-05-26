@@ -2,6 +2,46 @@ import streamlit as st
 import pandas as pd
 import os
 
+# Custom CSS injection
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto+Mono&display=swap');
+
+/* Main title styling */
+h1 {
+    font-family: 'Playfair Display', serif !important;
+    color: #2a3f5f !important;
+    border-bottom: 2px solid #2a3f5f;
+    padding-bottom: 10px;
+}
+
+/* Bhajan title styling */
+.bhajan-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.8rem !important;
+    color: #2a3f5f !important;
+    margin: 1rem 0 !important;
+}
+
+/* Script content styling */
+.script-content {
+    font-family: 'Roboto Mono', monospace !important;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Dropdown styling */
+.stSelectbox > div > div {
+    font-family: 'Playfair Display', serif !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Load data from Excel
 @st.cache_data
 def load_data():
@@ -17,7 +57,7 @@ data = load_data()
 st.title('Sahajayoga Bhajan Sangraha')
 
 # Language selection
-language = st.selectbox('Select Language', ['Marathi/मराठी (MR)', 'Hindi/हिन्दी (HI)', 'English (EN)'])
+language = st.selectbox('Select Language', ['Marathi / मराठी (MR)', 'Hindi / हिन्दी (HI)', 'English (EN)'])
 lang_code = language[-3:-1]  # Extracts MR/HI/EN
 
 # Bhajan selection
@@ -41,9 +81,9 @@ bhajan_code = df.iloc[selected_index]['Code']
 name_roman = df.iloc[selected_index]['Name (Roman)']
 name_orig = df.iloc[selected_index]['Name (Orig)']
 
-# Display title
-st.subheader(f"{name_roman}")
-st.subheader(f"{name_orig}")
+# Display combined title
+st.markdown(f"<div class='bhajan-title'>{name_roman} / {name_orig}</div>", 
+            unsafe_allow_html=True)
 
 # Construct file path
 file_suffix = script_map[script]
@@ -53,6 +93,7 @@ file_path = f"Scripts/{lang_code}/{bhajan_code}-{file_suffix}.txt"
 if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    st.code(content, language='text')
+    st.markdown(f"<div class='script-content'>{content}</div>", 
+               unsafe_allow_html=True)
 else:
     st.error("File not found. Please check the file structure.")
