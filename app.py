@@ -106,7 +106,8 @@ file_path = f"Scripts/{lang_code}/{bhajan_code}-{file_suffix}.txt"
 if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    st.code(content, language='text')
+    # st.code(content, language='text')
+    st.write(content)
 else:
     st.error("File not found. Please check the file structure.")
 common_message()
