@@ -62,6 +62,8 @@ def load_data():
     data['MR'] = pd.read_excel('Data.xlsx', sheet_name='MR')
     data['HI'] = pd.read_excel('Data.xlsx', sheet_name='HI')
     data['EN'] = pd.read_excel('Data.xlsx', sheet_name='EN')
+    data['TA'] = pd.read_excel('Data.xlsx', sheet_name='TA')
+
     return data
 
 data = load_data()
@@ -70,7 +72,7 @@ data = load_data()
 st.title('Sahajayoga Bhajan Sangraha')
 
 # Language selection
-language = st.selectbox('Select Language', ['Marathi / मराठी (MR)', 'Hindi / हिन्दी (HI)', 'English (EN)'])
+language = st.selectbox('Select Language', ['Marathi / मराठी (MR)', 'Hindi / हिन्दी (HI)', 'English (EN)', 'Tamil / தமிழ் (TA)'])
 lang_code = language[-3:-1]  # Extracts MR/HI/EN
 
 # Bhajan selection
@@ -79,9 +81,16 @@ bhajan_options = [f"{row['Name (Roman)']} / {row['Name (Orig)']}"
                  for _, row in df.iterrows()]
 selected_bhajan = st.selectbox('Select Bhajan', bhajan_options)
 
+original_script = {
+	'MR': 'DN',
+	'HI': 'DN',
+	'EN': 'EN',
+	'TA': 'TA'
+}
+
 # Script selection
 script_map = {
-    'Original': 'DN' if lang_code in ['MR', 'HI'] else 'EN',
+    'Original': original_script[lang_code],
     'Devanagari': 'DN',
     'English': 'EN',
     'ISO 15919 Indic': 'ISO'
