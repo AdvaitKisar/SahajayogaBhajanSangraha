@@ -2,6 +2,18 @@ import streamlit as st
 import pandas as pd
 import os
 
+def common_message():
+  st.write('''
+  ### Contact:
+  Jai Shree Mataji!
+  For any queries or feedback, reach out to:
+  - **Advait Amit Kisar**
+  - Phone: +91 7774035501
+  - Email: [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com)
+  
+  Thank you for using this web app!
+  ''')
+
 # Custom CSS injection
 st.markdown("""
 <style>
@@ -97,3 +109,4 @@ if os.path.exists(file_path):
                unsafe_allow_html=True)
 else:
     st.error("File not found. Please check the file structure.")
+common_message()
