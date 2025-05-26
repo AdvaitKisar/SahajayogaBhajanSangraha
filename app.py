@@ -6,8 +6,9 @@ def common_message():
   st.write('''
   ### Contact:
   Jai Shree Mataji!
-  For any queries or feedback, reach out to:
-  - **Advait Amit Kisar**
+
+  For any queries or feedback, reach out to me:
+  - Name: Advait Amit Kisar
   - Phone: +91 7774035501
   - Email: [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com)
   
@@ -105,8 +106,7 @@ file_path = f"Scripts/{lang_code}/{bhajan_code}-{file_suffix}.txt"
 if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    st.markdown(f"<div class='script-content'>{content}</div>", 
-               unsafe_allow_html=True)
+    st.code(content, language='text')
 else:
     st.error("File not found. Please check the file structure.")
 common_message()
