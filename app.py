@@ -7,18 +7,18 @@ import os
 def load_data():
     data = {}
     data['MR'] = pd.read_excel('Data.xlsx', sheet_name='MR')
-    data['HN'] = pd.read_excel('Data.xlsx', sheet_name='HN')
+    data['HI'] = pd.read_excel('Data.xlsx', sheet_name='HI')
     data['EN'] = pd.read_excel('Data.xlsx', sheet_name='EN')
     return data
 
 data = load_data()
 
 # App layout
-st.title('Bhajan Viewer')
+st.title('Sahajayoga Bhajan Sangraha')
 
 # Language selection
-language = st.selectbox('Select Language', ['Marathi (MR)', 'Hindi (HN)', 'English (EN)'])
-lang_code = language[-3:-1]  # Extracts MR/HN/EN
+language = st.selectbox('Select Language', ['Marathi/मराठी (MR)', 'Hindi/हिन्दी (HI)', 'English (EN)'])
+lang_code = language[-3:-1]  # Extracts MR/HI/EN
 
 # Bhajan selection
 df = data[lang_code]
@@ -28,7 +28,7 @@ selected_bhajan = st.selectbox('Select Bhajan', bhajan_options)
 
 # Script selection
 script_map = {
-    'Original': 'DN' if lang_code in ['MR', 'HN'] else 'EN',
+    'Original': 'DN' if lang_code in ['MR', 'HI'] else 'EN',
     'Devanagari': 'DN',
     'English': 'EN',
     'ISO 15919 Indic': 'ISO'
