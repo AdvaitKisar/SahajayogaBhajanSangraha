@@ -7,12 +7,7 @@ def common_message():
   ### Contact:
   Jai Shree Mataji!
 
-  For any queries or feedback, reach out to me:
-  - Name: Advait Amit Kisar
-  - Phone: +91 7774035501
-  - Email: [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com)
-  
-  Thank you for using this web app!
+  For any queries or feedback, you may reach out to me at +91 7774035501 or [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com). Thank you for using this web app!
   ''')
 
 # Custom CSS injection
