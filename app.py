@@ -71,14 +71,14 @@ data = load_data()
 # App layout
 st.title('Sahajayoga Bhajan Sangraha')
 
+st.markdown('<div style="font-size: 14px; color: #777;">Designed and developed by Advait Amit Kisar</div>', unsafe_allow_html=True)
+
 # Language selection
 language = st.selectbox('Select Language', ['Marathi / मराठी (MR)', 'Hindi / हिन्दी (HI)', 'English (EN)', 'Tamil / தமிழ் (TA)'])
 lang_code = language[-3:-1]  # Extracts MR/HI/EN
 
 # Bhajan selection
 df = data[lang_code]
-#bhajan_options = [f"{row['Name (Roman)']} / {row['Name (Orig)']}" 
-#                 for _, row in df.iterrows()]
 bhajan_options = [
     f"{idx+1}. {row['Name (Roman)']} / {row['Name (Orig)']}"
     for idx, (_, row) in enumerate(df.iterrows())
@@ -124,4 +124,7 @@ if os.path.exists(file_path):
     st.text(content)
 else:
     st.error("File not found. Please check the file structure.")
+
+st.markdown('<div style="margin-top: 16px;">Recommendation:</div>', unsafe_allow_html=True)
+st.link_button("Check out Sahajayoga Stotra Sangraha", "https://sahajayogastotrasangraha.streamlit.app/")
 common_message()
