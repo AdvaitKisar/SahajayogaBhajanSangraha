@@ -71,7 +71,7 @@ data = load_data()
 # App layout
 st.title('Sahajayoga Bhajan Sangraha')
 
-st.markdown('<div style="font-size: 14px; color: #777;">Designed and developed by Advait Amit Kisar</div>', unsafe_allow_html=True)
+st.markdown('<div style="font-size: 14px; color: #000;">Designed and developed by Advait Amit Kisar</div>', unsafe_allow_html=True)
 
 # Language selection
 language = st.selectbox('Select Language', ['Marathi / मराठी (MR)', 'Hindi / हिन्दी (HI)', 'English (EN)', 'Tamil / தமிழ் (TA)'])
@@ -125,6 +125,6 @@ if os.path.exists(file_path):
 else:
     st.error("File not found. Please check the file structure.")
 
-st.markdown('<div style="margin-top: 16px;">Recommendation:</div>', unsafe_allow_html=True)
-st.link_button("Check out Sahajayoga Stotra Sangraha", "https://sahajayogastotrasangraha.streamlit.app/")
+st.markdown('<div style="margin-top: 16px;">Check out Sahajayoga Stotra Sangraha for getting lyrics of Stotras and Shlokas:</div>', unsafe_allow_html=True)
+st.link_button("Sahajayoga Stotra Sangraha", "https://sahajayogastotrasangraha.streamlit.app/", type="primary")
 common_message()
