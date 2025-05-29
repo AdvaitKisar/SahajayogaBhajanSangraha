@@ -4,10 +4,11 @@ import os
 
 def common_message():
   st.write('''
-  ### Contact:
   Jai Shree Mataji!
 
-  For any queries or feedback, you may reach out to me at +91 7774035501 or [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com). Thank you for using this web app!
+  For any queries or feedback, you may reach out to me at +91 7774035501 or [advaitkisar2509@gmail.com](mailto:advaitkisar2509@gmail.com). 
+
+  Thank you for using this web app!
   ''')
 
 # Custom CSS injection
@@ -75,7 +76,7 @@ lang_code = language[-3:-1]  # Extracts MR/HI/EN
 # Bhajan selection
 df = data[lang_code]
 bhajan_options = [
-    f"{idx+1}. {row['Name (Roman)']} / {row['Name (Orig)']}"
+    f"{idx+1}. {row['Name (Roman)']} / {row['Name (Original)']}"
     for idx, (_, row) in enumerate(df.iterrows())
 ]
 selected_bhajan = st.selectbox('Select Bhajan', bhajan_options)
@@ -100,7 +101,7 @@ script = st.selectbox('Select Script', list(script_map.keys()), index=0)
 selected_index = bhajan_options.index(selected_bhajan)
 bhajan_code = df.iloc[selected_index]['Code']
 name_roman = df.iloc[selected_index]['Name (Roman)']
-name_orig = df.iloc[selected_index]['Name (Orig)']
+name_orig = df.iloc[selected_index]['Name (Original)']
 
 # Display combined title
 st.markdown(f"<div class='bhajan-title'>{name_roman} / {name_orig}</div>", 
