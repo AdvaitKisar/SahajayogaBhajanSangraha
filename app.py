@@ -77,8 +77,12 @@ lang_code = language[-3:-1]  # Extracts MR/HI/EN
 
 # Bhajan selection
 df = data[lang_code]
-bhajan_options = [f"{row['Name (Roman)']} / {row['Name (Orig)']}" 
-                 for _, row in df.iterrows()]
+#bhajan_options = [f"{row['Name (Roman)']} / {row['Name (Orig)']}" 
+#                 for _, row in df.iterrows()]
+bhajan_options = [
+    f"{idx+1}. {row['Name (Roman)']} / {row['Name (Orig)']}"
+    for idx, (_, row) in enumerate(df.iterrows())
+]
 selected_bhajan = st.selectbox('Select Bhajan', bhajan_options)
 
 original_script = {
