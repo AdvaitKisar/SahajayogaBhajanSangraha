@@ -104,6 +104,7 @@ name_roman = df.iloc[selected_index]['Name (Roman)']
 name_orig = df.iloc[selected_index]['Name (Original)']
 
 # Display combined title
+st.divider()
 st.markdown(f"<div class='bhajan-title'>{name_roman} / {name_orig}</div>", 
             unsafe_allow_html=True)
 
@@ -120,6 +121,7 @@ if os.path.exists(file_path):
     st.text(content)
 else:
     st.error("File not found. Please check the file structure.")
+st.divider()
 
 st.markdown('<div style="margin-top: 16px;">Check out Sahajayoga Stotra Sangraha for getting lyrics of Stotras and Shlokas:</div>', unsafe_allow_html=True)
 st.link_button("Sahajayoga Stotra Sangraha", "https://sahajayogastotrasangraha.streamlit.app/", type="primary")
